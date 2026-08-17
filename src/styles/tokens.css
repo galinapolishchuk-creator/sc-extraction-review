@@ -1,0 +1,148 @@
+/* ==================================================================
+   СЛОЙ ТОКЕНОВ
+
+   1. `--semantic-*` — имена 1:1 с Figma Semantic (слэши заменены дефисами).
+      Значения сняты с канваса пиксельной пробой в теме Biege, а НЕ взяты из
+      фолбэков `get_design_context`: те отдают значение дефолтного мода и
+      врут (напр. text/accent там #B22222, на канвасе #28ACE4).
+   2. Короткие алиасы — то, чем пользуется остальной CSS. Каждый указывает
+      на семантический токен, сырых hex в алиасах нет.
+   3. Отдельный блок — значения, которым семантического аналога пока не нашли.
+      Их надо либо завести в DS, либо заменить существующими (вопрос Galera).
+   ================================================================== */
+
+:root{
+  /* ---------- surface ---------- */
+  --semantic-surface-default:#F7F6F5;
+  --semantic-surface-raised:#FFFFFF;
+  --semantic-surface-input-default:#FFFFFF;
+  --semantic-surface-read-only-bg:#F3F1EF;
+
+  /* ---------- border ---------- */
+  --semantic-border-default:#DBDAD5;
+  --semantic-border-warning:#EC8521;
+  --semantic-border-success:#0C7B7B;
+  --semantic-border-negative:#C75757;
+  --semantic-border-disabled:#ECEAE6;
+
+  /* ---------- text ---------- */
+  --semantic-text-primary:#000000;
+  --semantic-text-secondary:#5A5A5A;
+  --semantic-text-tertiary:#999999;
+  --semantic-text-label:#999999;
+  --semantic-text-placeholder:#414141;
+  --semantic-text-accent:#28ACE4;
+  --semantic-text-warning:#EC8521;
+  --semantic-text-positive:#0C7B7B;
+  --semantic-text-negative:#C75757;
+  --semantic-text-disabled:#B5B5B5;
+
+  /* ---------- action ---------- */
+  --semantic-action-primary-bg:#28ACE4;
+  --semantic-action-fill-positive-bg:#08980E;
+  --semantic-action-outline-default-text:#000000;
+  --semantic-action-outline-default-border:#000000;
+  --semantic-action-outline-negative-text:#B22222;
+  --semantic-action-outline-negative-border:#B22222;
+  --semantic-action-text-on-fill:#FFFFFF;
+
+  /* ---------- alert ---------- */
+  --semantic-alert-warning-bg:#FBF8F1;
+  --semantic-alert-warning-border:#F3E7DD;
+
+  /* ---------- status ---------- */
+  --semantic-status-warning-text:#EC8521;
+  --semantic-status-failed-text:#B22222;
+  --semantic-status-success-text:#056209;
+
+  /* ---------- icon ---------- */
+  --semantic-icon-success:#08980E;
+  --semantic-icon-default:#414141;
+  --semantic-icon-negative:#C75757;
+  --semantic-icon-placeholder:#666666;
+
+  /* ---------- surface (продолжение) ---------- */
+  --semantic-surface-highlight:#EAE7E2;   /* таб More details */
+
+  /* ---------- metric (плитки сводки) ---------- */
+  --semantic-metric-level-1-text:#198DB3;
+  --semantic-metric-level-1-bg:#198DB31A;
+  --semantic-metric-level-1-border:#198DB333;
+  --semantic-metric-level-2-text:#A858C5;
+  --semantic-metric-level-2-bg:#964AB21A;
+  --semantic-metric-level-2-border:#964AB233;
+  --semantic-metric-level-4-text:#30765D;
+  --semantic-metric-level-4-bg:#7DA77F1A;
+  --semantic-metric-level-4-border:#7DA77F33;
+}
+
+/* ------------------------------------------------------------------
+   Короткие алиасы. Только ссылки на семантику, никаких сырых значений.
+   ------------------------------------------------------------------ */
+:root{
+  --page:var(--semantic-surface-default);
+  --raised:var(--semantic-surface-raised);
+  --ro-bg:var(--semantic-surface-read-only-bg);
+
+  --border:var(--semantic-border-default);
+  --control-border:var(--semantic-border-default);
+  --line:var(--semantic-border-disabled);
+
+  --ink:var(--semantic-text-primary);
+  --ink-2:var(--semantic-text-secondary);
+  --ink-3:var(--semantic-text-tertiary);
+  --ink-reason:var(--semantic-text-secondary);
+
+  --accent:var(--semantic-text-accent);
+  --teal:var(--semantic-text-positive);
+
+  --warn:var(--semantic-status-warning-text);
+  --warn-bg:var(--semantic-alert-warning-bg);
+  --warn-band-line:var(--semantic-alert-warning-border);
+  --err:var(--semantic-status-failed-text);
+  --ok:var(--semantic-status-success-text);
+  --confirm:var(--semantic-icon-success);
+
+  --disabled-ink:var(--semantic-text-disabled);
+  /* «мягкий» красный полей NOT FOUND и конфликта — border/text negative.
+     Кнопка DELETE — другой токен и другое значение (#B22222). */
+  --err-strong:var(--semantic-border-negative);
+  --action-negative:var(--semantic-action-outline-negative-border);
+  --tab-bg:var(--semantic-surface-highlight);
+
+  --adv-unc:var(--semantic-metric-level-1-text);
+  --adv-unc-bg:var(--semantic-metric-level-1-bg);
+  --adv-unc-line:var(--semantic-metric-level-1-border);
+  --adv-ful:var(--semantic-metric-level-4-text);
+  --adv-ful-bg:var(--semantic-metric-level-4-bg);
+  --adv-ful-line:var(--semantic-metric-level-4-border);
+  --adv-nf:var(--semantic-metric-level-2-text);
+  --adv-nf-bg:var(--semantic-metric-level-2-bg);
+  --adv-nf-line:var(--semantic-metric-level-2-border);
+
+  --radius:6px;
+}
+
+/* ------------------------------------------------------------------
+   БЕЗ семантического аналога — значения сняты с канваса пикселем, но
+   в Semantic такого токена не нашли. Каждое место — вопрос к Galera:
+   завести токен или заменить существующим.
+   ------------------------------------------------------------------ */
+:root{
+  /* аппбар и тулбар PDF — разные значения, снято пикселем с канваса */
+  --appbar-bg:#423C34;
+  --pdf-toolbar-bg:#3C3C3C;
+  --ink-chrome:#CCCCCC;      /* текст в тулбаре PDF */
+  --pdf-head-bg:#F0EFEC;     /* шапка PDF-панели */
+  --pdf-hl:#FBEB8F;          /* подсветка клаузы в PDF */
+  --pdf-hl-ink:#3A3320;
+  --skeleton:#E9E7E3;        /* заглушка строк документа */
+  --divider:#E2DFDA;         /* разделитель групп в оверрайдах */
+  --ink-strong:#111111;      /* тёмная заливка: SAVE, активный чип, тост */
+  --ink-dark:#423C34;        /* кнопка Create New */
+  --ink-ghost:#B4B2AC;       /* унаследованное значение ставки */
+  --warn-line:#F0DCC2;       /* рамка подсветки клаузы в PDF */
+  --ok-bg:#EAF6ED;
+  --ok-line:#C7E8CF;
+  --prio-bg:rgba(125,167,127,.25);  /* пилюля Priority */
+}

@@ -1,0 +1,13 @@
+/* ---------- sections ---------- */
+.sec{padding:30px 0}
+.sec-head{display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(0,0,0,.82);padding-bottom:9px;margin-bottom:20px}
+.sec-head h2{font-size:16px;font-weight:700;letter-spacing:1px}
+.sec-head .fcount{font-size:11px;color:var(--ink-3)}
+.head-pills{display:flex;gap:6px}
+.hp{font-size:9.5px;font-weight:800;letter-spacing:.4px;padding:3px 9px;border-radius:999px;border:1px solid}
+.hp.rev{color:var(--warn);border-color:var(--warn);background:#fff}
+.hp.nf{color:var(--err);border-color:var(--err);background:#fff}
+.hp.done{color:var(--ok);border-color:var(--ok-line);background:var(--ok-bg)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:25px 20px;max-width:1150px}
+.grid .colspan{grid-column:1/-1}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:25px 20px;max-width:1150px}

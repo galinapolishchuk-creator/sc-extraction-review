@@ -1,0 +1,19 @@
+/* advances summary — per Galera's AdvancesSummary in v3 (extracted 2026-08-13):
+   total ExtraBold 30 + TOTAL · N ADVANCES Bold 11 + 6px composition bar
+   (unconditional / fulfilled / not fulfilled); 3 tinted stat cards r10 */
+.totals{display:flex;align-items:flex-start;gap:20px;max-width:1150px;flex-wrap:wrap;margin-bottom:40px}
+.advtot{width:273px}
+.advtot .n{font-size:30px;font-weight:800;line-height:1}
+.advtot .l{font-size:11px;font-weight:700;color:var(--ink-2);letter-spacing:.5px;text-transform:uppercase;margin-top:6px}
+.advtot .sbar{display:flex;height:6px;border-radius:20px;overflow:hidden;background:var(--line);margin-top:10px}
+.advtot .sbar i{height:100%;display:block}
+.statcard{width:124px;border-radius:10px;padding:16px 18px}
+.statcard .n{font-size:20px;font-weight:800;line-height:1}
+.statcard .l{font-size:10px;font-weight:700;color:var(--ink-2);text-transform:uppercase;margin-top:6px;letter-spacing:.3px}
+.statcard.unc{background:var(--adv-unc-bg)}.statcard.unc .n{color:var(--adv-unc)}
+.statcard.ful{background:var(--adv-ful-bg)}.statcard.ful .n{color:var(--adv-ful)}
+.statcard.nf{background:var(--adv-nf-bg)}.statcard.nf .n{color:var(--adv-nf)}
+.advset{padding:18px 0 6px;border-bottom:1px solid var(--line);max-width:1150px}
+.wlist{background:var(--raised);border:1px solid var(--line);border-radius:6px;margin-top:10px;max-width:640px}
+.wlist label{display:flex;align-items:center;width:100%;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);font-size:16px;cursor:pointer}
+.wlist label:last-child{border-bottom:none}

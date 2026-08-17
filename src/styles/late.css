@@ -1,0 +1,71 @@
+/* ===== макет-сверка 2026-08-14 (round 2) — компоненты 1:1 =====
+   Этот блок намеренно последний: он переопределяет ранние правила
+   (checkbox/radio/More details/resolved/delete/сетки). Порядок импорта
+   в index.css менять нельзя. */
+
+/* checkbox_RS: 20px r4, белый фон, border/control всегда; чек — accent-глиф */
+.copt input{width:20px;height:20px;border:1px solid var(--control-border);border-radius:4px;background:#fff center/12px 12px no-repeat}
+/* radiobutton_RS: 22px, border/control остаётся всегда, точка 8px accent */
+.ropt input{width:22px;height:22px;border:1px solid var(--control-border);background:#fff}
+.ropt input:checked{border-color:var(--control-border)}
+.ropt input::before{width:8px;height:8px}
+
+/* иконки из DS */
+.ico{display:inline-block;flex:none;vertical-align:-2px}
+.ico-info{width:14px;height:14px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'><circle cx='7' cy='7' r='6' fill='none' stroke='%23414141'/><circle cx='7' cy='4.3' r='.85' fill='%235A5A5A'/><path d='M7 6.4v4' stroke='%235A5A5A' stroke-width='1.4' stroke-linecap='round'/></svg>") no-repeat center/14px}
+.ico-info.nf{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'><circle cx='7' cy='7' r='6' fill='none' stroke='%23DC0101'/><circle cx='7' cy='4.3' r='.85' fill='%23DC0101'/><path d='M7 6.4v4' stroke='%23DC0101' stroke-width='1.4' stroke-linecap='round'/></svg>")}
+.md .arr{transition:transform .15s}
+.md.open .arr{transform:rotate(180deg)}
+.ico-caret{width:10px;height:10px;background-size:8px 5px!important;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M1.2 3.4h7.6L5 8z' fill='currentColor'/></svg>") no-repeat center/10px}
+.ico-chev{width:12px;height:12px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'><path d='M2 4.6L7 9.4l5-4.8' fill='none' stroke='%23666' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center/12px}
+
+/* More details — таб по макету: #EAE7E2 / border/default / r999 / h29 / Medium 12.5 + caret */
+.md{display:inline-flex;align-items:center;gap:6px;height:29px;padding:0 12px;border-radius:999px;
+  background:var(--tab-bg);border:1px solid var(--border);color:var(--ink);font-size:12.5px;font-weight:500}
+.md.open{background:var(--tab-bg)}
+/* Priority / Status пилюли — тот же caret */
+.pillsel .dv{display:inline-block;width:10px;height:10px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M1.2 3.4h7.6L5 8z' fill='%2330765D'/></svg>") no-repeat center/10px;font-size:0}
+
+/* RESOLVED (200:14894): teal рамка + teal лейбл, «Confirmed» + Undo outlined */
+.ffield.resolved .box{border-color:var(--teal)}
+.ffield.resolved .nl{color:var(--teal)}
+.ffield.resolved .frow{background:none;border:none;padding:2px 0;margin-top:4px;gap:8px}
+.ffield.resolved .frow .why{color:var(--teal);font-size:11px;font-weight:400;display:inline-flex;align-items:center;gap:5px}
+.btn-undo{display:inline-flex;align-items:center;gap:4px;height:20px;border:1px solid var(--confirm);border-radius:4px;background:transparent;color:var(--ink);font-size:11px;font-weight:700;padding:0 8px;cursor:pointer}
+.btn-undo svg{width:11px;height:11px}
+
+/* DELETE — прозрачная */
+.delbtn{background:transparent}
+
+/* сетки не выезжают за контент */
+.grid,.grid3,.grid4{grid-template-columns:repeat(var(--cols),minmax(0,1fr))}
+.grid{--cols:2}.grid3{--cols:3}.grid4{--cols:4}
+.box input,.box select{min-width:0}
+.chip .slot{display:inline-flex;align-items:center;gap:5px}
+
+/* --- icons & states added on макет-сверке 2026-08-14 --- */
+.ico-ok{width:13px;height:13px;fill:none;stroke:var(--ok);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px}
+.noflags{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2)}
+.chip .ok{display:inline-flex;align-items:center}
+.chip .ico-ok{width:12px;height:12px}
+.delbtn svg{width:13px;height:13px;stroke:var(--err-strong);fill:none;stroke-width:1.8;stroke-linecap:round;margin-right:7px}
+.btn-back svg{width:14px;height:14px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.btn-commit .arr{width:12px;height:8px;flex:none;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path d='M0.5 4h9.5M7 0.8L10.6 4 7 7.2' fill='none' stroke='white' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center/12px 8px}
+
+/* exclusion rows: fixed grid so input + DELETE fit the 1150 column */
+.exrow{display:grid;grid-template-columns:565px 423px max-content;gap:20px;align-items:center;max-width:1150px}
+.exrow.plat{grid-template-columns:273px 273px 423px max-content}
+.exrow .fld{width:auto!important;min-width:0}
+
+/* conflict (rated + excluded) field — error-filled variant */
+.errf .box{border-color:var(--err-strong)}
+.errf .nl{color:var(--err-strong)}
+
+/* set blocks: no invented dividers, 40px between sets, 60px between sections */
+.advset{padding:0;border-bottom:none;max-width:1150px;margin-bottom:40px}
+.advset:last-child{margin-bottom:0}
+.sec{padding:30px 0}

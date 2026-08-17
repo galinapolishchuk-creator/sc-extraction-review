@@ -1,0 +1,39 @@
+/* ---------- layout ---------- */
+.split{display:flex;gap:50px;padding:0 20px 80px;align-items:flex-start;max-width:1920px;margin:0 auto}
+.pagehead,.banner{max-width:1920px;margin-left:auto;margin-right:auto}
+.banner{margin-left:auto;margin-right:auto}
+.pdfcol{width:620px;flex:none;position:sticky;top:118px}
+.main{flex:none;width:1150px;min-width:0}
+
+/* pdf zone — per макет 199:11932: r12, border/default, head #F0EFEC, зелёный immutable, две тени */
+.pdf{width:620px;height:880px;background:var(--raised);border:1px solid var(--border);border-radius:12px;overflow:hidden;
+  box-shadow:0 16px 40px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.10)}
+.pdf-head{display:flex;align-items:center;justify-content:space-between;height:42px;padding:0 16px;background:var(--pdf-head-bg)}
+.pdf-head b{font-size:13px;font-weight:600}
+.pdf-head .immutable{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;color:#056209}
+.ico-lock{width:10px;height:10px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'><path d='M3 5.2V3.6a3 3 0 016 0v1.6' fill='none' stroke='%23056209' stroke-width='1.2'/><rect x='2' y='5.2' width='8' height='5.6' rx='1.2' fill='%23056209'/></svg>") no-repeat center/10px}
+.pdf-page{background:#fff;height:785px;overflow:hidden}
+.pdf-hl{background:var(--pdf-hl);border:none;color:var(--pdf-hl-ink);font-size:11px;font-weight:600;padding:14px 12px;border-radius:2px;margin:14px 0}
+.pdf-note{font-size:11.5px;color:var(--ink-3);margin-top:10px;line-height:1.4}
+
+/* rates: Effective Date + Standard Rate живут в левой колонке матрицы, шапка карточки на их уровне.
+   Порядок блока сохранён как в исходнике — на нём держится каскад с rates.css. */
+.mx{align-items:flex-start}
+.mx .types{padding-top:0}
+/* left matrix column: narrow Standard Rate + APPLY, top-aligned with the card header */
+.stdrow{display:flex;gap:20px;align-items:flex-start;width:100%;max-width:273px;height:60px;margin-bottom:0}
+.btn-apply{height:42px;width:78px;justify-content:center;padding:0;display:inline-flex;align-items:center;background:#fff;border:1px solid var(--ink-strong);border-radius:6px;
+  font-size:11px;font-weight:700;letter-spacing:.5px;flex:none}
+.mxcol{margin-top:8px}
+.mxhead{height:52px;margin-bottom:0}
+
+.pdf-head{display:flex;justify-content:space-between;padding:10px 14px;font-size:12px;border-bottom:1px solid var(--line)}
+.pdf-head .tag{color:var(--ink-3);font-size:10px;letter-spacing:.6px}
+.pdf-tools{background:var(--pdf-toolbar-bg);color:var(--ink-chrome);font-size:11px;height:53px;padding:0 16px;display:flex;align-items:center;gap:14px}
+.pdf-body{height:640px;padding:22px;overflow:hidden;position:relative}
+.pl{height:9px;border-radius:3px;background:var(--skeleton);margin-bottom:11px}
+.pl.w60{width:60%}.pl.w80{width:80%}.pl.w45{width:45%}
+.pdf-hl{border:1px solid var(--warn-line);background:var(--warn-bg);color:var(--warn);font-size:10.5px;font-weight:700;letter-spacing:.4px;padding:10px 12px;border-radius:4px;margin:14px 0;transition:box-shadow .3s}
+.pdf-hl.flash{box-shadow:0 0 0 3px rgba(236,133,33,.35)}
+.pdf-note{font-size:10.5px;color:var(--ink-3);padding:10px 14px;border-top:1px solid var(--line)}

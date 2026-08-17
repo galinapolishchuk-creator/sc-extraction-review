@@ -1,0 +1,203 @@
+/* ===== round 3 — сверка скриншот-к-скриншоту с эталоном 199:11794 =====
+   Каждое правило здесь снято с макета, а не выведено из токенов.
+   Импортируется последним. */
+
+/* --- левый рейл навигации (199:11796) + шапка приложения ---
+   Рейл БЕЛЫЙ с правой границей, а не тёмный: проверено пикселем на канвасе.
+   Он в потоке страницы и тянется на всю высоту, как в макете. */
+.appshell{display:flex;align-items:stretch;min-height:100vh}
+.rail{width:60px;flex:none;background:var(--semantic-surface-raised);
+  border-right:1px solid var(--semantic-border-default);
+  display:flex;flex-direction:column;align-items:center;gap:35px;padding:16px 20px 128px}
+.rail-logo{height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}
+.rail-logo img{width:48px;height:33px;max-width:none;display:block}
+.rail-items{display:flex;flex-direction:column;gap:26px;align-items:center;flex:none}
+.rail-item{width:22px;height:22px;flex:none;display:inline-flex;align-items:center;justify-content:center}
+.rail-item img{display:block;max-width:none}
+.shell{flex:1;min-width:0}
+
+.appbar{height:55px;padding:0 28px;background:var(--appbar-bg)}
+.appbar .theme{display:inline-flex;align-items:center;gap:6px;background:#4A4340;border-radius:999px;padding:4px 8px}
+.appbar .theme span{width:16px;height:16px;display:inline-block}
+.appbar .help{font-size:14px;font-weight:700;letter-spacing:.3px}
+.appbar .user{display:inline-flex;align-items:center;gap:10px;font-size:14px}
+.appbar .ava{width:26px;height:26px;border-radius:50%;background:#8C8580;display:inline-flex;
+  align-items:center;justify-content:center;font-size:11px;font-weight:700}
+
+/* --- шапка страницы: крошки справа, крупный H1, без PENDING REVIEW --- */
+.pagehead{padding:30px 40px 22px}
+h1{font-size:34px;font-weight:700;letter-spacing:0}
+.subline{font-size:15px;color:var(--ink-2);margin-top:8px}
+.subline b{font-weight:400}
+.crumbs{font-size:13px;color:var(--ink-2);margin-bottom:0}
+.crumbs a{color:var(--accent);text-decoration:none}
+
+/* --- PDF: реальная панель инструментов --- */
+.pdf-tools{gap:10px;justify-content:flex-start;color:#E7E4E1;background:var(--pdf-toolbar-bg)}
+.pdf-tools .pg{display:inline-flex;align-items:center;gap:6px}
+.pdf-tools .box2{border:1px solid #6C6560;border-radius:3px;padding:2px 8px;font-size:11px;min-width:32px;text-align:center}
+.pdf-tools .ti{width:16px;height:16px;opacity:.85;flex:none}
+.pdf-tools .sp{flex:1}
+
+/* --- duration-поле: настоящая линейка-разделитель, юнит крупнее --- */
+.vsep{width:1px;height:20px;background:var(--border);flex:none}
+.box select.u{font-size:14px}
+
+/* --- флаг: в узком поле причина занимает свою строку, кнопки уходят вниз --- */
+.frow .why{min-width:240px}
+
+/* ===== мастера `fields with action bar` (199:12125) и `inputs` resolved
+   (200:14894) — сняты get_design_context + пиксельной пробой ===== */
+
+/* Внутренний отступ: у мастера `inputs` — 12px, у обёртки
+   `fields with action bar` — 15px. Замерено на самом эталоне: обычные поля
+   дают первую «чернильную» колонку на +11px, флагованное — на +13px. */
+.ffield .box{padding:0 15px}
+
+/* флаг: бокс и полоса — одна карточка, без зазора и без двойной рамки между ними */
+.ffield:not(.resolved):not(.nf) .box{border-radius:6px 6px 0 0}
+.ffield:not(.resolved):not(.nf) .frow{margin-top:0;border-top:none;border-radius:0 0 6px 6px}
+/* кнопки полосы: свой контейнер с gap 6 (у самой полосы justify-between) */
+.frow{justify-content:space-between}
+.fact{display:flex;align-items:center;gap:6px;height:20px;flex:none}
+.btn{letter-spacing:.2px;line-height:18px;padding:0 10px}
+.btn-out{border-color:#000;color:#000}
+
+/* --- resolved: Confirmed слева, Undo без рамки справа — одной строкой --- */
+.ffield.resolved .frow{justify-content:space-between;flex-wrap:nowrap;gap:3px}
+.ffield.resolved .frow .why{min-width:0;flex:1 0 0;gap:3px;font-size:11px;font-weight:400}
+.ffield.resolved .frow .ico-ok{width:14px;height:14px}
+/* Undo = h20, padding 7, r4, Bold 11 чёрным, без рамки и заливки */
+.btn-undo{border:none;background:transparent;height:20px;padding:0 7px;border-radius:4px;gap:3px;
+  font-size:11px;font-weight:700;letter-spacing:.2px;line-height:18px;color:var(--ink)}
+.btn-undo svg{width:12px;height:12px}
+/* точка-маркер: есть только у резолвленного лейбла, надстрочная (у флагованного её нет) */
+.ffield.resolved .nl::after{content:"";display:inline-block;width:3px;height:3px;border-radius:50%;
+  background:var(--teal);margin-left:3px;vertical-align:5px}
+
+/* --- 40px между сет-блоками (Party / Writer) --- */
+.setgap{margin-top:40px}
+
+/* ===== нотч-лейбл: маска ровно в 1px =====
+   Было: у лейбла сплошная заливка цветом фона высотой во весь текст — она
+   заезжала внутрь поля на пиксель. В макете (1:1113) вместо заливки лежит
+   полоска высотой 1px ровно на линии рамки, а текст рисуется поверх неё.
+   Полоска — ::before с z-index -1 внутри собственного контекста наложения .nl. */
+.nl{background:none;left:10px;padding:0 2px;top:-9px;height:14px;
+  display:inline-flex;align-items:center;line-height:14px}
+.nl::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;
+  background:var(--page);z-index:-1}
+/* на серой подложке оверрайдов маска того же цвета, что подложка */
+.ovpanel .nl{background:none}
+.ovpanel .nl::before{background:var(--ro-bg)}
+/* у флагованного поля мастер другой: отступ слева 12, внутренний 3 */
+.ffield .nl{left:12px;padding:0 3px}
+
+/* --- «+ TERRITORY SPLIT» ровно под полем Territory, по левому краю --- */
+.splits > .inlink{align-self:flex-start;text-align:left}
+
+/* ===== кнопка DELETE (362:26014) =====
+   action/outline/negative = #B22222. Это НЕ тот же красный, что у полей
+   NOT FOUND и конфликта (#C75757, border/text negative) — токены разные. */
+.delbtn{height:42px;padding:0 20px;gap:10px;border-radius:6px;background:transparent;
+  border:1px solid var(--action-negative);color:var(--action-negative);
+  font-size:14px;font-weight:700;line-height:14px;letter-spacing:1.5px;text-transform:uppercase}
+.delbtn svg{width:auto;height:auto;stroke:none;margin-right:0}
+
+/* ===== таб More details (361:18450) — сплошной каретик из DS ===== */
+.md .arr{display:inline-flex;align-items:center;transition:transform .15s}
+.md.open .arr{transform:rotate(180deg)}
+
+/* ===== поле в состоянии конфликта (277:17454) =====
+   Своя строка ошибки под полем: кружок-крестик + текст Regular 11. */
+.errf .box{border-color:var(--semantic-border-negative);padding:0 15px}
+.errf .nl{color:var(--semantic-text-negative)}
+.errline{display:flex;align-items:center;gap:3px;margin-top:4px;
+  font-size:11px;color:var(--semantic-text-negative);line-height:normal}
+
+/* ===== Territory + DELETE = одна колонка, ряд заканчивается на 1150 =====
+   Средняя колонка тянется, поэтому правый край всегда ровно по контенту,
+   какой бы ширины ни оказалась кнопка. */
+.exrow{grid-template-columns:565px 1fr max-content}
+.exrow.plat{grid-template-columns:273px 273px 1fr max-content}
+
+/* ===== поле «квартал | год» (281:17342) =====
+   Год — отдельная секция с чертой слева; черта короткая, по высоте строки,
+   а не во весь бокс. Справа шеврон 12×6 из DS. */
+.qyfield .box{justify-content:space-between;gap:0}
+.qy-year{border-left:1px solid var(--border);padding:0 10px;font-size:14px;color:var(--ink);flex:none}
+
+/* ===== модуль ставок (291:90728) — пересобран по ноде =====
+   Ряды без «зебры»: проверено пикселем, все ряды на фоне страницы,
+   белая только карточка активного сета. */
+.ratemx{display:flex;align-items:flex-end;max-width:1150px}
+
+/* колонка типов */
+.rmx-types{width:293px;flex:none;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end}
+.rmx-head{height:60px;width:272.5px;display:flex;gap:20px;align-items:center}
+.rmx-head .fld{flex:1;min-width:0}
+.rmx-apply{height:42px;padding:0 15px;flex:none;background:transparent;border:1px solid var(--ink);
+  border-radius:6px;font-size:14px;font-weight:700;line-height:14px;letter-spacing:1.5px;text-transform:uppercase}
+.rmx-trow{width:100%;height:56px;display:flex;align-items:center;padding:7px 10px;
+  border-bottom:1px solid var(--border);font-size:14px;font-weight:600}
+.rmx-trow.short{height:30px}
+.rmx-trow:last-child{border-bottom:none}
+
+/* колонки сетов */
+.rmx-col{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;border-radius:6px}
+.rmx-col.on{background:var(--raised);filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+.rmx-sethead{height:52px;display:flex;align-items:center;padding-bottom:10px}
+.rmx-std .rmx-sethead{padding-left:15px;padding-right:15px}
+.rmx-pr .rmx-sethead{padding-left:20px;padding-right:15px}
+.rmx-sethead .row{width:100%;height:42px;display:flex;align-items:center;justify-content:space-between}
+.rmx-sethead .ropt{font-size:12px;letter-spacing:.5px;gap:10px}
+.rmx-hist{background:none;border:none;color:var(--accent);font-size:11px;font-weight:500;letter-spacing:.2px}
+
+/* ячейки */
+.rmx-cell{height:56px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.rmx-std .rmx-cell{padding:7px 15px 8px}
+.rmx-pr .rmx-cell{padding:7px 20px 8px}
+.rmx-cell:last-child{border-bottom:none}
+.rmx-cell.short{height:30px;font-size:11.5px}
+.rmx-pr .rmx-cell.short{color:var(--ink-3)}
+
+/* поле ставки: 140×42, значение слева, % справа */
+.rmx-in{width:140px;height:42px;flex:none;display:flex;align-items:center;gap:50px;padding:0 12px;
+  background:var(--raised);border:1px solid var(--border);border-radius:6px}
+.rmx-in input{flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:14px;color:var(--ink)}
+.rmx-in.bad{border-color:var(--err-strong)}
+/* неактивный сет: светлая рамка и приглушённое значение */
+.rmx-pr .rmx-in{border-color:var(--line)}
+.rmx-pr .rmx-in input{color:var(--disabled-ink)}
+
+/* ===== AdvancesSummary (381:20626) — пересобран по ноде =====
+   Цвета — semantic/metric/level-1|2|4: 1 = unconditional, 4 = fulfilled,
+   2 = not fulfilled. У плиток есть рамка (border @20%), её раньше не было. */
+.totals{gap:0;align-items:flex-start}
+.advtot{width:272.5px;min-width:190px;display:flex;flex-direction:column;justify-content:space-between;align-self:stretch}
+.advtot .grp{display:flex;flex-direction:column;gap:5px}
+.advtot .n{font-size:30px;font-weight:800;line-height:30px;letter-spacing:-.5px}
+.advtot .l{font-size:11px;font-weight:700;line-height:11px;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--semantic-text-secondary);margin-top:0}
+/* полоса: сегменты в ряд, разделены белой линией в 1px, трек скруглён 20 */
+.advtot .sbar{display:flex;height:6px;width:272.5px;border-radius:20px;overflow:hidden;margin-top:0;
+  background:var(--semantic-metric-level-1-text)}
+.advtot .sbar i{height:6px;display:block}
+.advtot .sbar i + i{border-left:1px solid #fff}
+
+.statcards{display:flex;gap:12px;align-items:flex-start;padding-left:20px}
+.statcard{min-width:124px;width:auto;border-radius:10px;padding:16px 18px;border:1px solid transparent;
+  display:flex;flex-direction:column;gap:5px;justify-content:center}
+.statcard .n{font-size:20px;font-weight:800;line-height:20px;letter-spacing:-.2px}
+.statcard .l{font-size:10px;font-weight:700;line-height:10px;letter-spacing:.3px;text-transform:uppercase;
+  color:var(--semantic-text-secondary);margin-top:0}
+.statcard.unc{background:var(--adv-unc-bg);border-color:var(--adv-unc-line)}
+.statcard.ful{background:var(--adv-ful-bg);border-color:var(--adv-ful-line)}
+.statcard.nf{background:var(--adv-nf-bg);border-color:var(--adv-nf-line)}
+
+/* мета справа от поля */
+.rmx-eq{font-size:12px;color:var(--ink-2)}
+.rmx-tag{background:var(--raised);border:1px solid var(--warn);color:var(--warn);border-radius:3px;
+  padding:2px 7px;font-size:10px;font-weight:700;letter-spacing:.4px}
+.rmx-reset{background:none;border:none;font-size:11px;color:var(--ink)}
+.rmx-reset u{text-underline-offset:2px}

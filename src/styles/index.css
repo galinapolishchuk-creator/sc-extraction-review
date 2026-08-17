@@ -1,0 +1,16 @@
+/* Порядок импорта = порядок блоков в extraction-review-v3-prototype.html.
+   Каскад держится на нём (дубли .mxhead/.pdf-head/.copt/.md/.advset —
+   намеренные, поздний блок побеждает). Не переставлять. */
+@import './tokens.css';
+@import './base.css';
+@import './chrome.css';
+@import './layout.css';
+@import './bar.css';
+@import './sections.css';
+@import './fields.css';
+@import './misc.css';
+@import './rates.css';
+@import './advances.css';
+@import './overlay.css';
+@import './late.css';
+@import './figma-sync.css';

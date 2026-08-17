@@ -1,0 +1,75 @@
+/* fields */
+.fld{position:relative}
+.nl{position:absolute;top:-9px;left:10px;background:var(--page);padding:0 4px;font-size:11px;font-weight:600;color:var(--ink-3);line-height:1;white-space:nowrap;z-index:2}
+.box{display:flex;align-items:center;height:42px;background:var(--raised);border:1px solid var(--border);border-radius:var(--radius);padding:0 12px;gap:8px}
+.box:focus-within{border-color:var(--ink-strong)}
+.box input,.box select{flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:14px;color:var(--ink)}
+.box .unit{color:var(--ink-3);font-size:12px;white-space:nowrap}
+.box select.u{flex:none;width:auto;color:var(--ink);font-size:13px}
+.helper{font-size:10.5px;color:var(--ink-3);margin-top:5px;line-height:1.4}
+.kv{font-size:14px}
+.kv .nlk{font-size:10.5px;font-weight:400;color:var(--ink-3);margin-bottom:5px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:25px 20px;max-width:1150px}
+.pillsel{display:inline-flex;align-items:center;gap:6px;border-radius:20px;padding:2px 9px;font-size:12px;font-weight:700;color:var(--ink-2);background:var(--border);cursor:pointer}
+.pillsel.prio{background:var(--prio-bg);color:var(--adv-ful);font-size:13px;padding:5px 12px;border-radius:22px}
+.pillsel .dv{font-size:10px}
+.head-pills{margin-left:auto}
+/* set header (Party 1 / Writer 1 / Advance 1) + EXTRACTED badge + Remove — per макет */
+.sethead{display:flex;align-items:center;gap:10px;margin:0 0 16px}
+.sethead b{font-size:14px;font-weight:700}
+.subhead{font-size:14px;font-weight:700}
+.subtag{display:inline-flex;align-items:center;height:20px;padding:0 9px;border-radius:999px;
+  background:#fff;border:1px solid var(--ink-3);color:var(--ink-3);font-size:10px;font-weight:700;letter-spacing:.4px}
+.rmbtn{margin-left:auto;display:inline-flex;align-items:center;gap:10px;background:none;border:none;font-size:13px;color:var(--ink)}
+.rmbtn svg{width:12px;height:12px;stroke:var(--ink);fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+.enum{display:flex;gap:36px;align-items:center;min-height:30px;flex-wrap:wrap}
+.enum-l{font-size:11px;font-weight:600;color:var(--ink-3);margin-bottom:7px}
+.ropt{display:inline-flex;align-items:center;gap:8px;font-size:16px;cursor:pointer;user-select:none}
+.ropt input{appearance:none;width:20px;height:20px;border:1px solid #B3B2AD;border-radius:50%;display:grid;place-content:center;background:#fff;cursor:pointer;margin:0;flex:none}
+.ropt input::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);transform:scale(0);transition:transform .1s}
+.ropt input:checked{border-color:var(--accent)}
+.ropt input:checked::before{transform:scale(1)}
+/* checkbox_RS — single source of truth: 20px r4 border/control;
+   checked = accent fill + white inset check; disabled = plain empty box */
+.copt{display:inline-flex;align-items:center;gap:10px;font-size:16px;cursor:pointer;user-select:none}
+.copt input{appearance:none;width:20px;height:20px;border:1px solid var(--control-border);border-radius:4px;
+  background:#fff center/12px 12px no-repeat;cursor:pointer;margin:0;flex:none}
+.copt input:checked{background-color:var(--accent);border-color:var(--accent);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M3.4 8.4l2.9 2.9 6.3-6.6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>")}
+.copt input:indeterminate{background-color:var(--accent);border-color:var(--accent);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M3.6 8h8.8' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>")}
+/* disabled per 395:29976: plain empty box (white, border/default), grey label, no glyph */
+.copt input:disabled,.copt input:disabled:checked{border-color:var(--border);background-color:#fff;background-image:none;cursor:default}
+.copt input:disabled+span{color:var(--disabled-ink)}
+/* writer entity-match band — extracted: warn-bg / warn band line / r6 / pad 10-12, text Regular 13 */
+.frow.match{background:var(--warn-bg);border:1px solid var(--warn-band-line);border-radius:6px;padding:10px 12px;margin-top:0;gap:12px}
+.frow.match .why{color:var(--ink);font-size:13px;line-height:1.35}
+.mbtn{height:33px;border-radius:6px;font-size:12px;font-weight:700;padding:0 15px;white-space:nowrap;display:inline-flex;align-items:center}
+.mbtn.w{background:transparent;border:1px solid var(--ink);color:var(--ink)}
+.mbtn.g{background:var(--ink-dark);border:1px solid var(--ink-dark);color:#fff}
+
+/* flag fields — anatomy per `fields with action bar` master (extracted 2026-08-13):
+   field border warn / nf err-strong; action bar h36 pad 8 gap 8;
+   PR = warn-bg + warn band line, reason Regular 12; NF = no band, no Confirm */
+.ffield .box{border-color:var(--warn)}
+.ffield .nl{color:var(--warn)}
+.ffield.nf .box{border-color:var(--err-strong)}
+.ffield.nf .nl{color:var(--err-strong)}
+.frow{margin-top:4px;padding:8px;border-radius:4px;background:var(--warn-bg);border:1px solid var(--warn-band-line);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ffield.nf .frow{background:none;border:none;padding:2px 0;margin-top:6px}
+.frow .why{font-size:12px;color:var(--ink-reason);flex:1;min-width:140px}
+.ffield.nf .frow .why{color:var(--err-strong);font-size:11px}
+.ffield.nf .box input::placeholder{color:var(--ink-3)}
+.fbadge{font-size:9px;font-weight:800;letter-spacing:.4px;padding:3px 7px;border-radius:2px}
+.fbadge.nf{background:var(--err);color:#fff}
+.btn{font-size:11px;font-weight:700;letter-spacing:.3px;padding:2px 10px;height:20px;display:inline-flex;align-items:center;border-radius:4px;border:1px solid transparent;white-space:nowrap}
+.btn:hover{opacity:.85}
+.btn-out{background:#fff;border-color:var(--ink-strong);color:var(--ink-strong)}
+.btn-conf{background:var(--confirm);border-color:var(--confirm);color:#fff}
+.btn-undo{background:transparent;border-color:var(--ok);color:var(--ok)}
+.ffield.resolved .box{border-color:var(--ok-line)}
+.ffield.resolved .nl{color:var(--ok)}
+.ffield.resolved .frow{background:var(--ok-bg)}
+.ffield.resolved .frow .why{color:var(--ok);font-weight:700}
+.jump-flash{animation:jf 1.2s ease-out 1}
+@keyframes jf{0%{box-shadow:0 0 0 4px rgba(236,133,33,.45)}100%{box-shadow:0 0 0 4px rgba(236,133,33,0)}}
