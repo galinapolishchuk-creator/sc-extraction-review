@@ -86,6 +86,37 @@ click($('#f-cure .btn-undo'))
 await new Promise((r) => setTimeout(r, 60))
 check('Undo у Cure открывает флаг', $('#f-cure .btn-conf'))
 
+/* match-баннер райтера: notice → linked / created, с текстом и Undo */
+const w1 = () => $('#f-w1-match')
+check('match-баннер в состоянии notice', w1()?.classList.contains('notice'))
+check('в notice две кнопки', $$('#f-w1-match .mbtn').length === 2, $$('#f-w1-match .mbtn').length + ' шт')
+
+click($$('#f-w1-match .mbtn')[0]) // Link Existing
+await new Promise((r) => setTimeout(r, 60))
+check('Link Existing → зелёная плашка', w1()?.classList.contains('done'))
+check('текст linked на месте', /Linked to existing Writer/.test(w1()?.textContent || ''), (w1()?.textContent || '').slice(0, 40))
+check('в плашке есть Undo', /Undo/.test(w1()?.textContent || ''))
+
+click($('#f-w1-match .mbtn.undo'))
+await new Promise((r) => setTimeout(r, 60))
+check('Undo возвращает notice', w1()?.classList.contains('notice'))
+
+click($$('#f-w1-match .mbtn')[1]) // Create New
+await new Promise((r) => setTimeout(r, 60))
+check('Create New → свой текст', /New Writer entity will be created/.test(w1()?.textContent || ''),
+  (w1()?.textContent || '').slice(0, 40))
+click($('#f-w1-match .mbtn.undo'))
+await new Promise((r) => setTimeout(r, 60))
+
+/* DBA: пара = два поля в одной колонке, «add another» добавляет пару рядом */
+check('DBA-пары есть', $$('.dbapair').length >= 4, $$('.dbapair').length + ' пар')
+check('в паре ровно 2 поля', $$('.dbapair').every((p) => p.querySelectorAll('.fld').length === 2))
+const dbaBefore = $$('.dbapair').length
+click($$('#sec-writers .inlink')[0])
+await new Promise((r) => setTimeout(r, 60))
+check('«+ ADD ANOTHER DBA PAIR» добавляет пару', $$('.dbapair').length === dbaBefore + 1,
+  `${dbaBefore} → ${$$('.dbapair').length}`)
+
 click($('[data-hist="std"]'))
 await new Promise((r) => setTimeout(r, 60))
 check('Rate history попап', $('.pop.show'))

@@ -1,5 +1,5 @@
 import { useReview } from './ReviewContext.jsx'
-import { InfoIcon, CheckIcon } from '../../ui/Icon.jsx'
+import { InfoIcon, CheckIcon, UndoIcon } from '../../ui/Icon.jsx'
 import { MiniButton, UndoButton, MatchButton } from '../../ui/Buttons.jsx'
 
 const cx = (...a) => a.filter(Boolean).join(' ')
@@ -72,29 +72,41 @@ export function FlagField({ id, label, value, placeholder, why, pdf, width, styl
   )
 }
 
-/* Баннер совпадения сущности у райтера: warn-полоса + Link Existing / Create New */
-export function MatchFlag({ id, why }) {
-  const { flags, resolve } = useReview()
+/* ------------------------------------------------------------------
+   Баннер совпадения сущности у райтера — мастер `Alert` (412:683).
+   Три состояния: notice → linked / created. Резолв НЕ схлопывается в
+   «Confirmed»: приходит зелёная плашка со своим текстом и Undo.
+   ------------------------------------------------------------------ */
+export function MatchFlag({ id, why, linkedText, createdText }) {
+  const { flags, resolve, undo } = useReview()
   const flag = flags[id]
   if (!flag) return null
-  const done = !!flag.resolved
-  const style = { margin: '0 0 20px' }
+  const done = flag.resolved
+
+  if (done) {
+    return (
+      <div id={id} className="ffield resolved mbanner done" style={{ margin: '0 0 20px' }}>
+        <span>{done === 'created' ? createdText : linkedText}</span>
+        <span className="acts">
+          <button className="mbtn undo" onClick={() => undo(id)}>
+            <UndoIcon /> Undo
+          </button>
+        </span>
+      </div>
+    )
+  }
 
   return (
-    <div id={id} className={cx('fld', 'ffield', done && 'resolved')}>
-      {done ? (
-        <ResolvedRow id={id} how={flag.resolved} style={style} />
-      ) : (
-        <div className="frow match" style={style}>
-          <span className="why">{why}</span>
-          <MatchButton tone="w" onClick={() => resolve(id, 'confirmed')}>
-            Link Existing
-          </MatchButton>
-          <MatchButton tone="g" onClick={() => resolve(id, 'confirmed')}>
-            Create New
-          </MatchButton>
-        </div>
-      )}
+    <div id={id} className="ffield mbanner notice" style={{ margin: '0 0 20px' }}>
+      <span>{why}</span>
+      <span className="acts">
+        <MatchButton tone="w" onClick={() => resolve(id, 'linked')}>
+          Link Existing
+        </MatchButton>
+        <MatchButton tone="g" onClick={() => resolve(id, 'created')}>
+          Create New
+        </MatchButton>
+      </span>
     </div>
   )
 }

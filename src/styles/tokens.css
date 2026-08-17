@@ -49,6 +49,10 @@
   /* ---------- alert ---------- */
   --semantic-alert-warning-bg:#FBF8F1;
   --semantic-alert-warning-border:#F3E7DD;
+  --semantic-alert-warning-text:#000000;
+
+  /* ---------- action (заливка по умолчанию) ---------- */
+  --semantic-action-fill-default-bg:#000000;
 
   /* ---------- status ---------- */
   --semantic-status-warning-text:#EC8521;
@@ -74,6 +78,15 @@
   --semantic-metric-level-4-text:#30765D;
   --semantic-metric-level-4-bg:#7DA77F1A;
   --semantic-metric-level-4-border:#7DA77F33;
+}
+
+/* ------------------------------------------------------------------
+   Примитивы, на которые мастера ссылаются напрямую (в обход semantic/*).
+   Так они и заданы в Figma — см. `Alert` 412:683 в SC Library.
+   ------------------------------------------------------------------ */
+:root{
+  --emerald-600-10:#7DA77F1A;
+  --emerald-600-20:#7DA77F33;
 }
 
 /* ------------------------------------------------------------------
