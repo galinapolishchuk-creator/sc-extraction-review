@@ -21,7 +21,7 @@
   /* ---------- border ---------- */
   --semantic-border-default:#DBDAD5;
   --semantic-border-warning:#EC8521;
-  --semantic-border-success:#0C7B7B;
+  --semantic-border-success:#4B741B;
   --semantic-border-negative:#C75757;
   --semantic-border-disabled:#ECEAE6;
 
@@ -33,7 +33,7 @@
   --semantic-text-placeholder:#414141;
   --semantic-text-accent:#28ACE4;
   --semantic-text-warning:#EC8521;
-  --semantic-text-positive:#0C7B7B;
+  --semantic-text-positive:#4B741B;
   --semantic-text-negative:#C75757;
   --semantic-text-disabled:#B5B5B5;
 
@@ -51,16 +51,19 @@
   --semantic-alert-warning-border:#F3E7DD;
   --semantic-alert-warning-text:#000000;
 
-  /* ---------- action (заливка по умолчанию) ---------- */
+  /* ---------- action (заливки) ---------- */
   --semantic-action-fill-default-bg:#000000;
+  /* заливка кнопки Confirm — НЕ ушла в lime вместе с success/positive,
+     это отдельный токен: проверено пикселем на 199:12125 */
+  --semantic-action-fill-positive-bg:#08980E;
 
   /* ---------- status ---------- */
   --semantic-status-warning-text:#EC8521;
   --semantic-status-failed-text:#B22222;
-  --semantic-status-success-text:#056209;
+  --semantic-status-success-text:#4B741B;
 
   /* ---------- icon ---------- */
-  --semantic-icon-success:#08980E;
+  --semantic-icon-success:#4B741B;
   --semantic-icon-default:#414141;
   --semantic-icon-negative:#C75757;
   --semantic-icon-placeholder:#666666;
@@ -107,14 +110,16 @@
   --ink-reason:var(--semantic-text-secondary);
 
   --accent:var(--semantic-text-accent);
-  --teal:var(--semantic-text-positive);
+  /* success/positive в теме Biege = lime/800 (#4B741B) с 2026-08-17:
+     рамка, иконка и текст. Заливка Confirm при этом осталась зелёной. */
+  --positive:var(--semantic-text-positive);
 
   --warn:var(--semantic-status-warning-text);
   --warn-bg:var(--semantic-alert-warning-bg);
   --warn-band-line:var(--semantic-alert-warning-border);
   --err:var(--semantic-status-failed-text);
   --ok:var(--semantic-status-success-text);
-  --confirm:var(--semantic-icon-success);
+  --confirm:var(--semantic-action-fill-positive-bg);
 
   --disabled-ink:var(--semantic-text-disabled);
   /* «мягкий» красный полей NOT FOUND и конфликта — border/text negative.

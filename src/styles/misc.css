@@ -9,7 +9,9 @@
   background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11'><path d='M5.5 0.75v9.5M0.75 5.5h9.5' stroke='black' stroke-width='1.5' stroke-linecap='round'/></svg>") no-repeat center/11px}
 /* inline blue links (+ ADD ANOTHER · + TERRITORY SPLIT) — Bold 11 accent, no underline */
 .inlink{background:none;border:none;color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.5px;text-decoration:none;padding:0}
-.helper.calc{color:var(--teal);font-size:11px}
+/* calc-хелпер двухцветный: посчитанное значение — positive, пояснение — secondary */
+.helper.calc{color:var(--ink-2);font-size:11px}
+.helper.calc .cv{color:var(--positive)}
 /* back button — per макет */
 .btn-back{display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 20px;border:1px solid var(--ink);
   background:transparent;border-radius:6px;font-size:14px;font-weight:700;color:var(--ink)}

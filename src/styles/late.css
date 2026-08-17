@@ -31,10 +31,10 @@
   background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><path d='M1.2 3.4h7.6L5 8z' fill='%2330765D'/></svg>") no-repeat center/10px;font-size:0}
 
 /* RESOLVED (200:14894): teal рамка + teal лейбл, «Confirmed» + Undo outlined */
-.ffield.resolved .box{border-color:var(--teal)}
-.ffield.resolved .nl{color:var(--teal)}
+.ffield.resolved .box{border-color:var(--positive)}
+.ffield.resolved .nl{color:var(--positive)}
 .ffield.resolved .frow{background:none;border:none;padding:2px 0;margin-top:4px;gap:8px}
-.ffield.resolved .frow .why{color:var(--teal);font-size:11px;font-weight:400;display:inline-flex;align-items:center;gap:5px}
+.ffield.resolved .frow .why{color:var(--positive);font-size:11px;font-weight:400;display:inline-flex;align-items:center;gap:5px}
 .btn-undo{display:inline-flex;align-items:center;gap:4px;height:20px;border:1px solid var(--confirm);border-radius:4px;background:transparent;color:var(--ink);font-size:11px;font-weight:700;padding:0 8px;cursor:pointer}
 .btn-undo svg{width:11px;height:11px}
 

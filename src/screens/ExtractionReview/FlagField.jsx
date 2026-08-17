@@ -10,7 +10,7 @@ function ResolvedRow({ id, how, style }) {
   return (
     <div className="frow" style={style}>
       <span className="why">
-        <CheckIcon style={{ stroke: 'var(--teal)' }} />
+        <CheckIcon style={{ stroke: 'var(--positive)' }} />
         {how === 'edited' ? 'Corrected' : 'Confirmed'}
       </span>
       <UndoButton onClick={() => undo(id)} />

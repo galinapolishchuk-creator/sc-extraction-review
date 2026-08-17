@@ -7,6 +7,14 @@ import { useContract } from '../ContractContext.jsx'
 
 const UNITS = ['Days', 'Business Days', 'Months', 'Years']
 
+/* посчитанное значение выделено цветом positive, пояснение — вторичным */
+const Calc = ({ h }) => (
+  <>
+    <span className="cv">{h.lead}</span>
+    {h.rest}
+  </>
+)
+
 export function Terms() {
   const { initialTerm, setInitialTerm, collection, setCollection, rights, setRights, orUntil, setOrUntil, calc } =
     useContract()
@@ -33,7 +41,7 @@ export function Terms() {
           unit={initialTerm.unit}
           onValueInput={(e) => setInitialTerm({ ...initialTerm, val: e.target.value })}
           onUnitChange={(e) => setInitialTerm({ ...initialTerm, unit: e.target.value })}
-          helperCalc={calc.initialHelp}
+          helperCalc={<Calc h={calc.initialHelp} />}
         />
 
         <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
@@ -71,7 +79,7 @@ export function Terms() {
           unit={collection.unit}
           onValueInput={(e) => setCollection({ ...collection, val: e.target.value })}
           onUnitChange={(e) => setCollection({ ...collection, unit: e.target.value })}
-          helperCalc={calc.collectionHelp}
+          helperCalc={<Calc h={calc.collectionHelp} />}
         />
         <DurationField
           label="Rights Period"
@@ -81,7 +89,7 @@ export function Terms() {
           unit={rights.unit}
           onValueInput={(e) => setRights({ ...rights, val: e.target.value })}
           onUnitChange={(e) => setRights({ ...rights, unit: e.target.value })}
-          helperCalc={calc.rightsHelp}
+          helperCalc={<Calc h={calc.rightsHelp} />}
         />
 
         <TextField

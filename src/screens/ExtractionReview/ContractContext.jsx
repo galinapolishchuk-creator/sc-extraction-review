@@ -20,17 +20,18 @@ export function ContractProvider({ children }) {
     const laterNote = orUntil === 'None' ? '' : ' (later if the term extends)'
     const cp = te ? addUnit(te, collection.val, collection.unit) : ''
     const rp = te ? addUnit(te, rights.val, rights.unit) : ''
+    /* хелпер двухцветный: lead — посчитанная дата (positive), rest — пояснение */
     return {
       termEnd: te,
       initialHelp: te
-        ? `End Date ${te} · ${effDate} + ${initialTerm.val} ${initialTerm.unit}${clause}`
-        : 'End Date — needs a value',
+        ? { lead: `End Date ${te}`, rest: ` · ${effDate} + ${initialTerm.val} ${initialTerm.unit}${clause}` }
+        : { lead: 'End Date', rest: ' — needs a value' },
       collectionHelp: cp
-        ? `Collection End ${cp} · Term end ${te} + ${collection.val} ${collection.unit}${laterNote}`
-        : 'Collection End — needs Initial Term',
+        ? { lead: `Collection End ${cp}`, rest: ` · Term end ${te} + ${collection.val} ${collection.unit}${laterNote}` }
+        : { lead: 'Collection End', rest: ' — needs Initial Term' },
       rightsHelp: rp
-        ? `Rights End ${rp} · Term end ${te} + ${rights.val} ${rights.unit}${laterNote}`
-        : 'Rights End — needs Initial Term',
+        ? { lead: `Rights End ${rp}`, rest: ` · Term end ${te} + ${rights.val} ${rights.unit}${laterNote}` }
+        : { lead: 'Rights End', rest: ' — needs Initial Term' },
     }
   }, [effDate, initialTerm, collection, rights, orUntil])
 
